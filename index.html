@@ -432,8 +432,8 @@
 
     /* Scroll reveal */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
+      opacity: 1;
+      transform: none;
       transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
     }
 
@@ -1215,6 +1215,10 @@
 
     reveals.forEach(el => revealObs.observe(el));
     stats.forEach(el => revealObs.observe(el));
+
+    
+    // Fallback: s'assurer que tous les éléments .reveal sont visibles
+    document.querySelectorAll('.reveal, .stat-item').forEach(el => el.classList.add('visible'));
 
     /* ---- Smooth scroll for CTA ---- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
