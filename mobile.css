@@ -1,0 +1,188 @@
+/* ============================================================
+   MOBILE.CSS — Optimisation responsive pour tous les dashboards
+   Breakpoints: 768px (tablet), 480px (mobile)
+   ============================================================ */
+
+/* ── BASE MOBILE ── */
+@media (max-width: 768px) {
+
+  /* Reset overflow */
+  body { overflow-x: hidden !important; }
+  * { box-sizing: border-box; }
+
+  /* ── NAVIGATION FLOTTANTE (nav.js) ── */
+  #oc-nav {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 8px 4px !important;
+    justify-content: space-around !important;
+    gap: 0 !important;
+  }
+  #oc-nav a {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    min-width: 48px !important;
+    text-align: center !important;
+  }
+
+  /* ── AGENTS-VIEW (Essaim) ── */
+  #stats-bar { flex-wrap: wrap; gap: 8px; padding: 8px; }
+  #stats-bar > div { flex: 1 1 45%; min-width: 100px; }
+  #agent-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 12px !important; }
+  .agent-card { padding: 12px !important; }
+  .agent-name { font-size: 13px !important; }
+  #canvas-container, #svg-lines { display: none; } /* Cacher le graphe SVG sur mobile */
+  #mobile-swarm { display: block; } /* Afficher version mobile si présente */
+
+  /* ── DASHBOARD-PRO (Kanban + Planning) ── */
+  .kanban-board { 
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 12px !important;
+  }
+  .kanban-column { 
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+  .sidebar, .left-panel, [class*="sidebar"] {
+    position: fixed !important;
+    left: -280px !important;
+    z-index: 1000 !important;
+    transition: left 0.3s ease !important;
+    width: 260px !important;
+    height: 100vh !important;
+    top: 0 !important;
+    overflow-y: auto !important;
+  }
+  .sidebar.open, .left-panel.open { left: 0 !important; }
+  .main-content, [class*="main-content"] { margin-left: 0 !important; width: 100% !important; }
+
+  /* Gantt / Planning */
+  .gantt-container, [class*="gantt"] { overflow-x: auto !important; }
+  .week-view { min-width: 600px !important; }
+
+  /* ── CHAT (War Room) ── */
+  .chat-layout, .chat-container {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .channels-sidebar {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    display: flex !important;
+    flex-direction: row !important;
+    padding: 8px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    border-right: none !important;
+  }
+  .channels-sidebar .channel-item {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+  }
+  .chat-main { flex: 1 !important; height: calc(100vh - 120px - 60px) !important; }
+  .right-panel, .agents-panel {
+    display: none !important; /* Masqué sur mobile, accessible via bouton */
+  }
+  .chat-input-area { padding: 8px !important; }
+  .chat-input-area input, .chat-input-area textarea {
+    font-size: 16px !important; /* Évite le zoom auto iOS */
+  }
+
+  /* ── TEAM (Équipe + Peer Rating) ── */
+  .agents-grid, .team-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 12px !important;
+  }
+  .agent-card-team {
+    width: 100% !important;
+    max-width: unset !important;
+  }
+  .avatar-img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .synergy-matrix { overflow-x: auto !important; }
+  .synergy-matrix table { min-width: 400px; font-size: 11px !important; }
+  .leaderboard-table { overflow-x: auto !important; }
+  .leaderboard-table table { min-width: 500px; font-size: 12px !important; }
+
+  /* Notifications live */
+  .notifications-feed, #rating-feed {
+    max-height: 120px !important;
+    font-size: 11px !important;
+  }
+
+  /* ── IDEAS (Innovation Board) ── */
+  .ideas-grid, .pipeline-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+  .idea-card { width: 100% !important; }
+  .vote-buttons button { padding: 10px 16px !important; min-height: 44px !important; }
+
+  /* ── SITE HUB ── */
+  .hero-section h1 { font-size: 2rem !important; }
+  .hero-section p { font-size: 1rem !important; }
+  .projects-grid { grid-template-columns: 1fr !important; gap: 20px !important; padding: 20px !important; }
+  .project-card { width: 100% !important; }
+  .nav-links { flex-wrap: wrap !important; gap: 8px !important; justify-content: center !important; }
+
+  /* ── TABLEAUX EN GÉNÉRAL ── */
+  table { font-size: 12px !important; }
+  th, td { padding: 6px 8px !important; }
+  .table-container, [class*="table-wrap"] { overflow-x: auto !important; }
+
+  /* ── MODALES ── */
+  .modal, [class*="modal"] {
+    width: 95vw !important;
+    margin: 10px auto !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* ── BOUTONS TOUCH-FRIENDLY ── */
+  button, .btn, [role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* ── HEADER ── */
+  .header, header { padding: 8px 12px !important; }
+  .header h1, .page-title { font-size: 1.2rem !important; }
+}
+
+/* ── PETIT MOBILE (< 480px) ── */
+@media (max-width: 480px) {
+  #agent-grid { grid-template-columns: 1fr !important; }
+  .stat-value { font-size: 1.4rem !important; }
+  .hero-section h1 { font-size: 1.6rem !important; }
+  .channels-sidebar { max-height: 80px !important; }
+}
+
+/* ── TOUCH IMPROVEMENTS (tous écrans tactiles) ── */
+@media (hover: none) and (pointer: coarse) {
+  /* Pas de hover effects qui bloquent le tap */
+  *:hover { transition: none !important; }
+  
+  /* Scrolling smooth natif */
+  .scroll-container, [class*="scroll"] {
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+  }
+
+  /* Agrandir les zones cliquables */
+  a, button { -webkit-tap-highlight-color: rgba(99,102,241,0.3); }
+}
